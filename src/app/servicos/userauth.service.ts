@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 
+export interface sessao {
+  ID_USUARIO: number|null;
+  NM_USUARIO: string|null;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserauthService {
-  sessao : object = {
+  sessao : sessao = {
     ID_USUARIO: null,
     NM_USUARIO: null
   }
@@ -14,15 +19,15 @@ export class UserauthService {
 
   async requestLogin(userNumero : string, userSenha: string){
     try{
-      let request = await fetch(environment.apiUrl + "/usuarios/auth", {
+      let request = await fetch(environment.apiUrl + "/usuarios/login", {
         method: "POST",
         headers: {
           "Token": environment.token,
           "Content-Type":"application/json"
         },
         body: JSON.stringify({
-          userNumero: userNumero,
-          userSenha: userSenha
+          CD_USUARIO: userNumero,
+          SENHA: userSenha
         })
       })
 
@@ -41,11 +46,15 @@ export class UserauthService {
     }
   }
 
-  setarSessao(sessao: object){
+  setarSessao(sessao: sessao){
     this.sessao = sessao
   }
 
   pegarSessao(){
+    if(this.sessao.ID_USUARIO == null){
+      return undefined
+    }
+
     return this.sessao
   }
 

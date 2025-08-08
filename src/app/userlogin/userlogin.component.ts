@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'
-import { RouterLink } from '@angular/router';
-
-import { environment } from '../../environments/environment.development';
+import { RouterLink, Router } from '@angular/router';
 import { UserauthService } from '../servicos/userauth.service';
 
 @Component({
@@ -17,7 +15,7 @@ export class UserloginComponent {
   userSenha : string = ''
   mensagem : string = ''
 
-  constructor(private userAuth : UserauthService){ }
+  constructor(private userAuth : UserauthService, private router : Router){ }
 
   async submitLogin(){
     let response = await this.userAuth.requestLogin(this.userNumero, this.userSenha)
@@ -27,6 +25,9 @@ export class UserloginComponent {
       return
     }
 
-    
+    if(response.sucesso == true){
+      this.userAuth.setarSessao(response.data[0])
+      this.router.navigate(['/dashbord'])
+    }
   }
 }
