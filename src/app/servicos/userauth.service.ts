@@ -64,4 +64,31 @@ export class UserauthService {
       NM_USUARIO: null
     }
   }
+
+  async requestCadastro(userNumero:string, userNome:string, userSenha:string){
+    try{
+      let request = await fetch(environment.apiUrl + "/usuarios/cadastro", {
+        method: "POST",
+        headers: {
+          "Token": environment.token,
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+          CD_USUARIO: userNumero,
+          NM_USUARIO: userNome,
+          SENHA: userSenha
+        })
+      })
+
+      if(request.status != 200){console.log(request); return}
+
+      let data = await request.json()
+
+      return data
+    }
+    catch(err){
+      console.log(err)
+      return false
+    }
+  }
 }

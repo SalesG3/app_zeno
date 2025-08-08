@@ -1,0 +1,57 @@
+.componente{
+    width: 100vw;
+    height: 100vh;
+    margin: -.5rem;
+}
+
+.titulo{
+    display: block;
+    margin: 1rem 0rem;
+
+    font: bold 2rem "Calibri";
+    text-align: center;
+}
+
+.formCadastro{
+    position: absolute;
+    
+    width: 20rem;
+    left: calc(50% - 20rem / 2);
+
+    height: 30rem;
+    top: calc(50% - 30rem / 2);
+    
+    border: 1px solid gray;
+    border-radius: 1rem;
+}
+
+label{
+    display: block;
+    margin: .25rem 1rem;
+    font: bold 1rem "Calibri";
+}
+
+input{
+    display: block;
+    margin: .25rem 1rem;
+
+    width: calc(100% - 2.5rem);
+    height: 2rem;
+
+    font: normal 1rem "Calibri";
+}
+
+button{
+    display: block;
+    margin: .5rem 1rem;
+
+    width: calc(100% - 2rem);
+    height: 2rem;
+}
+
+.aviso{
+    display: block;
+    font: italic .85rem "Calibri";
+    color: red;
+    margin: 0rem 1rem;
+}

@@ -1,0 +1,55 @@
+<section class="componente">
+    
+    <div class="formCadastro">
+        
+        <span class="titulo">
+            Zeno - Cadastro
+        </span>
+
+        <label for="userNumero">
+            Celular:
+        </label>
+
+        <input
+            id="userNumero"
+            [(ngModel)]="userNumero"
+            type="number"
+            required
+        ><br>
+
+        <label for="userNome">
+            Nome:
+        </label>
+
+        <input
+            id="userNome"
+            [(ngModel)]="userNome"
+            type="text"
+            required
+        ><br>
+
+        <label for="userSenha">
+            Senha:
+        </label>
+
+        <input
+            id="userSenha"
+            [(ngModel)]="userSenha"
+            type="password"
+            required
+        ><br>
+
+        <button (click)="submitCadastro()">
+            Cadastrar-se
+        </button>
+
+        <button routerLink="/login">
+            Voltar
+        </button>
+
+        <span class="aviso">
+            {{mensagem}}
+        </span>
+
+    </div>
+</section>

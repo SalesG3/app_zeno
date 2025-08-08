@@ -1,0 +1,16 @@
+.menu{
+    position: absolute;
+    display: flex;
+    margin: -.5rem;
+
+    width: 100%;
+
+    top: calc(100% - 6rem);
+    height: 4rem;
+
+    justify-content: space-around;
+}
+
+.navegador{
+    width: calc(100% / 3);
+}

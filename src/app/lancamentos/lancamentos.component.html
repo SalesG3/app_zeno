@@ -1,0 +1,84 @@
+<section class="componente">
+
+    <button (click)="novoRegistro()">
+        Novo
+    </button>
+
+</section>
+
+<dialog id="modal" class="modal">
+
+    <div class="coluna">
+
+        <label for="DT_LANCAMENTO">
+            Data:
+        </label>
+        
+        <input
+        id="DT_LANCAMENTO"
+        [(ngModel)]="DT_LANCAMENTO"
+        type="date"
+        required
+        >
+
+    </div>
+
+    <div class="coluna">
+
+        
+        <label for="TP_LANCAMENTO">
+            Tipo:
+        </label>
+        
+        <select>
+            <option hidden></option>
+            <option value="R">Receita</option>
+            <option value="D">Despesa</option>
+        </select>
+    
+    </div>
+
+    <div class="inteiro">
+
+        
+        <label for="ID_CATEGORIA">
+            Categoria:
+        </label>
+        
+        <select>
+            <option hidden></option>
+            <option value="1">Outros</option>
+        </select><br>
+        
+        <label for="DS_LANCAMENTO">
+            Descrição:
+        </label>
+        
+        <textarea id="DS_LANCAMENTO"></textarea>
+    </div>
+    
+    <div class="coluna">
+
+        <label for="VL_LANAMENTO">
+            Valor:
+        </label>
+        
+        <input
+        id="VL_LANCAMENTO"
+        type="number"
+        >
+    </div>
+
+    <div class="coluna">
+
+        <button (click)="salvarRegistro()">
+            Salvar
+        </button>
+
+        <button>
+            Cancelar
+        </button>
+    </div>
+
+
+</dialog>
