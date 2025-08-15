@@ -6,79 +6,63 @@
 
 </section>
 
-<dialog id="modal" class="modal">
+<dialog class="modal">
 
-    <div class="coluna">
+    <label for="DT_LANCAMENTO">
+        Data:
+    </label>
 
-        <label for="DT_LANCAMENTO">
-            Data:
-        </label>
-        
-        <input
-        id="DT_LANCAMENTO"
-        [(ngModel)]="DT_LANCAMENTO"
-        type="date"
-        required
-        >
-
-    </div>
-
-    <div class="coluna">
-
-        
-        <label for="TP_LANCAMENTO">
-            Tipo:
-        </label>
-        
-        <select>
-            <option hidden></option>
-            <option value="R">Receita</option>
-            <option value="D">Despesa</option>
-        </select>
+    <label for="TP_LANCAMENTO">
+        Tipo:
+    </label>
     
-    </div>
-
-    <div class="inteiro">
-
-        
-        <label for="ID_CATEGORIA">
-            Categoria:
-        </label>
-        
-        <select>
-            <option hidden></option>
-            <option value="1">Outros</option>
-        </select><br>
-        
-        <label for="DS_LANCAMENTO">
-            Descrição:
-        </label>
-        
-        <textarea id="DS_LANCAMENTO"></textarea>
-    </div>
+    <input
+    id="DT_LANCAMENTO"
+    [(ngModel)]="DT_LANCAMENTO"
+    type="date"
+    required
+    >
     
-    <div class="coluna">
+    <select [(ngModel)]="TP_LANCAMENTO" id="TP_LANCAMENTO">
+        <option hidden></option>
+        <option value="R">Receita</option>
+        <option value="D">Despesa</option>
+    </select>
 
-        <label for="VL_LANAMENTO">
-            Valor:
-        </label>
-        
-        <input
-        id="VL_LANCAMENTO"
-        type="number"
-        >
-    </div>
+    <label for="ID_CATEGORIA">
+        Categoria:
+    </label>
+    
+    <select [(ngModel)]="ID_CATEGORIA" id="ID_CATEGORIA">
+        <option hidden></option>
+        <option value="1">Outros</option>
+    </select><br>
+    
+    <label for="DS_LANCAMENTO">
+        Descrição:
+    </label>
+    
+    <textarea id="DS_LANCAMENTO" [(ngModel)]="DS_LANCAMENTO"></textarea>
+    
+    <label for="VL_LANAMENTO">
+        Valor:
+    </label>
+    
+    <input
+    id="VL_LANCAMENTO"
+    [(ngModel)]="VL_LANCAMENTO"
+    type="number"
+    required
+    >
 
-    <div class="coluna">
-
-        <button (click)="salvarRegistro()">
-            Salvar
-        </button>
-
-        <button>
-            Cancelar
-        </button>
-    </div>
-
+    <br>
+    
+    <button class="btn-modal" (click)="salvarRegistro()">
+        Salvar
+    </button>
+    
+    <button class="btn-modal">
+        Cancelar
+    </button>
 
 </dialog>

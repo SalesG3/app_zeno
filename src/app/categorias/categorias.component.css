@@ -1,0 +1,25 @@
+.modal{
+    width: 20rem;
+    height: 30rem;
+}
+
+label{
+    display: inline-block;
+    font: bold .85rem 'Calibri';
+    margin: .125rem .5rem;
+}
+
+input, textarea{
+    margin: .125rem .5rem;
+    display: inline-block;
+    font: normal .85rem 'Calibri';
+    width: calc(100% - 1.5rem);
+    resize: none;
+}
+
+.btn-modal{
+    display: inline-block;
+    margin: 0.875rem .5rem;
+
+    width: 9rem;
+}

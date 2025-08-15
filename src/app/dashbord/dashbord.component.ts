@@ -17,6 +17,7 @@ export class DashbordComponent implements OnInit {
   ngOnInit(): void {
     if(!this.userAuth.pegarSessao()){
       this.router.navigate(['/login'])
+      return
     }
 
     this.NM_USUARIO = this.userAuth.sessao.NM_USUARIO || "";

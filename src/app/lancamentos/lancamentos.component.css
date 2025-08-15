@@ -5,9 +5,6 @@
 }
 
 .modal{
-    display: inline-flex;
-    flex-wrap: wrap;
-
     width: 18rem;
     height: 22rem;
 
@@ -16,36 +13,36 @@
     box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.5);
 }
 
-.inteiro{
-    width: 100%;
-    height: 12rem;
-}
-.coluna{
-    width: 50%;
-    height: 4rem;
-}
-
 textarea{
+    display: inline-block;
     height: 4rem;
     margin: .15rem .5rem;
-    width: calc(100% - 1.5rem);
+    width: calc(100% - 2rem);
 }
 
 label{
     margin: .15rem .5rem;
-    display: block;
+    display: inline-block;
+    width: 43%;
     font: bold 1.2rem "Calibri";
 }
 
-input, select{
-    display: block;
-    margin: .15rem .5rem;
-    font: normal 1rem "Calibri";
-    width: calc(100% - 1.5rem);
+#DT_LANCAMENTO, #TP_LANCAMENTO{
+    display: inline-block;
+    width: calc(50% - 1.5rem);
 }
 
-button{
+input, select{
+    display: inline-block;
     margin: .15rem .5rem;
-    width: calc(100% - 1rem);
+    height: 1.45rem;
+    font: normal 1rem "Calibri";
+    width: calc(100% - 2rem);
+}
+
+.btn-modal{
+    display: inline-block;
+    margin: .25rem .5rem;
+    width: calc(50% - 1rem);
     height: 1.5rem;
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UserauthService } from '../servicos/userauth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lancamentos',
@@ -10,25 +12,28 @@ import { FormsModule } from '@angular/forms';
 })
 export class LancamentosComponent implements OnInit {
   DT_LANCAMENTO : string = new Date().toISOString().substring(0, 10)
+  TP_LANCAMENTO : string = ''
+  ID_CATEGORIA : string = ''
+  DS_LANCAMENTO : string = ''
+  VL_LANCAMENTO : string = ''
 
-  constructor(){ }
+  constructor(private userAuth : UserauthService, private router : Router){ }
 
   ngOnInit(): void {
-    let dialog = document.querySelector('#modal') as HTMLDialogElement
-    
-    dialog.showModal()
+    if(!this.userAuth.pegarSessao()){
+      // this.router.navigate(['/login'])
+    }
   }
 
   novoRegistro(){
-    let dialog = document.querySelector('#modal') as HTMLDialogElement
+    let dialog = document.querySelector('.modal') as HTMLDialogElement
     
     dialog.showModal()
   }
 
   salvarRegistro(){
-    let dt = document.querySelector('#DT_LANCAMENTO') as HTMLInputElement
-
-
-    console.log(dt.value)
+    let dialog = document.querySelector('.modal') as HTMLDialogElement
+    
+    dialog.close()
   }
 }
