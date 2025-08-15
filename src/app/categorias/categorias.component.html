@@ -36,7 +36,7 @@
 </section>
 
 <dialog class="modal" #form>
-    <form #dataForm="ngForm" (ngSubmit)="salvarRegistro()">
+    <form #dataForm="ngForm" (ngSubmit)="salvarEditando ? editarRegistro() : salvarRegistro()">
         <label for="CD_CATEGORIA">
             Código:
         </label>
@@ -77,7 +77,7 @@
         <div *ngIf="!somenteLeitura">
 
             <button type="submit" class="btn-modal" [disabled]="dataForm.invalid">
-                Salvar
+                {{ salvarEditando ? "Salvar Edição" : "Salvar" }}
             </button>
     
             <button type="button" class="btn-modal" (click)="cancelarRegistro()">
@@ -88,7 +88,7 @@
 
         <div *ngIf="somenteLeitura">
 
-            <button type="button" class="btn-modal" (click)="somenteLeitura = false">
+            <button type="button" class="btn-modal" (click)="somenteLeitura = false; salvarEditando = true">
                 Editar
             </button>
 

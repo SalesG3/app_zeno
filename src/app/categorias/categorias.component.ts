@@ -19,10 +19,11 @@ export class CategoriasComponent implements OnInit{
   salvarEditando = false
   
   dataRow = {
-    ID_USUARIO : 0    ,
-    CD_CATEGORIA : '' ,
-    NM_CATEGORIA : '' ,
-    DS_CATEGORIA : '' ,
+    ID_CATEGORIA  : 0   ,
+    ID_USUARIO    : 0   ,
+    CD_CATEGORIA  : ''  ,
+    NM_CATEGORIA  : ''  ,
+    DS_CATEGORIA  : ''  ,
   }
 
   usuario : string = ''
@@ -68,6 +69,7 @@ export class CategoriasComponent implements OnInit{
 
   cancelarRegistro(){
     this.dataRow = {
+      ID_CATEGORIA  : 0   ,
       ID_USUARIO : this.dataRow.ID_USUARIO,
       CD_CATEGORIA : '' ,
       NM_CATEGORIA : '' ,
@@ -75,6 +77,7 @@ export class CategoriasComponent implements OnInit{
     }
     
     this.form.nativeElement.close()
+    this.salvarEditando = false
   }
 
   async salvarRegistro(){
@@ -88,6 +91,7 @@ export class CategoriasComponent implements OnInit{
       this.aviso.nativeElement.showModal()
 
       this.dataRow = {
+        ID_CATEGORIA  : 0   ,
         ID_USUARIO : this.dataRow.ID_USUARIO,
         CD_CATEGORIA : '' ,
         NM_CATEGORIA : '' ,
@@ -112,5 +116,30 @@ export class CategoriasComponent implements OnInit{
     this.dataRow = data[0]
     this.form.nativeElement.showModal()
     this.somenteLeitura = true
+  }
+
+  async editarRegistro(){
+
+    let data = await this.servico.alteraCategoria(this.dataRow.ID_CATEGORIA, this.dataRow)
+
+    if(data.sucesso){
+      this.dataGrid = await this.servico.gridCategoria(this.dataRow.ID_USUARIO)
+      this.mensagem = data.mensagem
+      this.form.nativeElement.close()
+      this.aviso.nativeElement.showModal()
+      this.salvarEditando = false
+
+      this.dataRow = {
+        ID_CATEGORIA  : 0   ,
+        ID_USUARIO : this.dataRow.ID_USUARIO,
+        CD_CATEGORIA : '' ,
+        NM_CATEGORIA : '' ,
+        DS_CATEGORIA : '' ,
+      }
+    }
+    else{
+      this.mensagem = data.mensagem
+      this.aviso.nativeElement.showModal()
+    }
   }
 }
