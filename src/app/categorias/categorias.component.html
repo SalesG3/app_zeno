@@ -1,10 +1,36 @@
 <section class="componente">
+    <div>
+        <button class="btn-voltar" routerLink="/dashbord">
+            Voltar
+        </button>
 
-    <button (click)="novoRegistro()">
-        Novo
+        <span class="comp-usuario">
+            Bem-Vindo(a), {{ usuario }}!!
+        </span>
+    </div>
+
+    <hr>
+
+    <span class="comp-titulo">
+        Categorias
+    </span>
+
+    <button class="btn-novo" (click)="novoRegistro()">
+        Novo +
     </button>
 
-    <table>
+    <table class="dataGrid">
+        <tr>
+            <th>Código:</th>
+            <th>Categoria:</th>
+            <th>Remover:</th>
+        </tr>
+
+        <tr  *ngFor="let cat of dataGrid">
+            <td class="col01" (click)="consultaRegistro(cat.ID_CATEGORIA)">{{(cat.CD_CATEGORIA + '').padStart(4, '0')}}</td>
+            <td class="col02" (click)="consultaRegistro(cat.ID_CATEGORIA)">{{cat.NM_CATEGORIA}}</td>
+            <td class="col03" (click)="excluirRegistro(cat.ID_CATEGORIA)">✕</td>
+        </tr>
     </table>
 
 </section>
@@ -19,6 +45,7 @@
         type="number"
         id="CD_CATEGORIA"
         [(ngModel)]="dataRow.CD_CATEGORIA"
+        [disabled]="somenteLeitura"
         name="CD_CATEGORIA"
         required
         >
@@ -31,6 +58,7 @@
         type="text"
         id="NM_CATEGORIA"
         [(ngModel)]="dataRow.NM_CATEGORIA"
+        [disabled]="somenteLeitura"
         name="NM_CATEGORIA"
         required
         >
@@ -42,16 +70,32 @@
         <textarea
         id="DS_CATEGORIA"
         [(ngModel)]="dataRow.DS_CATEGORIA"
+        [disabled]="somenteLeitura"
         name="DS_CATEGORIA"
         ></textarea>
 
-        <button type="submit" class="btn-modal" [disabled]="dataForm.invalid">
-            Salvar
-        </button>
+        <div *ngIf="!somenteLeitura">
 
-        <button type="button" class="btn-modal" (click)="cancelarRegistro()">
-            Cancelar
-        </button>
+            <button type="submit" class="btn-modal" [disabled]="dataForm.invalid">
+                Salvar
+            </button>
+    
+            <button type="button" class="btn-modal" (click)="cancelarRegistro()">
+                Cancelar
+            </button>
+
+        </div>
+
+        <div *ngIf="somenteLeitura">
+
+            <button type="button" class="btn-modal" (click)="somenteLeitura = false">
+                Editar
+            </button>
+
+            <button type="button" class="btn-modal" (click)="cancelarRegistro()">
+                Voltar
+            </button>
+        </div>
     </form>
 </dialog>
 

@@ -1,3 +1,9 @@
+.componente{
+    width: 100vw;
+    height: 100vh;
+    margin: -8px;
+}
+
 .modal{
     width: 20rem;
     height: 30rem;
@@ -22,4 +28,56 @@ input, textarea{
     margin: 0.875rem .5rem;
 
     width: 9rem;
+}
+.btn-voltar{
+    height: 3rem;
+    width: 15%;
+    margin: .25rem .5rem;
+}
+
+.btn-novo{
+    width: 6rem;
+    height: 2rem;
+    margin: .25rem .5rem;
+}
+
+.comp-titulo{
+    display: inline-block;
+    margin: .5rem .5rem;
+    font: bold 1.25rem 'Calibri';
+    width: 60%;
+}
+
+.comp-usuario{
+    display: inline-flex;
+    font: normal .95rem 'Cambria';
+    width: 45%;
+}
+
+.dataGrid{
+    display: inline-table;
+    width: 100%;
+    text-align: left;
+    font-family: 'Calibri';
+    border-collapse: collapse;
+
+    & .col01{
+        width: 17.5%;
+        padding-left: .5rem;
+    }
+
+    & .col02{
+        width: 65%;
+        padding-left: .5rem;
+    }
+
+    & .col03{
+        width: 17.5%;
+        text-align: center;
+    }
+
+    & tr, td, th{
+        border: 1px solid gray;
+        height: 1.75rem;
+    }
 }
